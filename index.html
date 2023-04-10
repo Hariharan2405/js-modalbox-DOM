@@ -1,0 +1,83 @@
+<!DocType html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="">
+		<meta name="keywords" content="HTML,JavaScript">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Modal box</title>	
+		<style>
+			*{margin:0; padding:0; box-sizing:border-box;}
+			.toast{border:2px outset black;width:500px;border-collapse:collapse;position:relative;background-color:white;position:fixed;top:40%;left:30%;}
+			.toast-r{display:none;}
+			.head{display:flex;align-item:baseline;background-color:blue;position:relative;padding:5px;}
+			.head .h2{align-self:flex-start;}
+			.head .close{cursor:pointer;margin-left:5%;position:absolute;right:0;}
+			.body{align-content:center;justify-content:center;padding:20px;border-top:2px solid black;text-align:center;}
+			.foot{border-top:2px solid black;padding:10px;display:flex;justify-content:right;}
+			button{margin:0px 10px;}
+			.overlay{background:#000;opacity:0.4;position:fixed;top:0;right:0;bottom:0;left:0;}
+		</style>
+	
+	</head>
+	
+	<body>
+	<div id="box">
+		<button>Modal Box</button>
+	</div>
+	<script>
+		var ol=document.getElementById("box");
+		
+		var toast=document.createElement("div");
+			toast.classList.add("toast");
+		
+		var head=document.createElement("div");
+		head.classList.add("head");
+			var h2=document.createElement("p");
+			h2.classList.add("h2");
+				h2.innerText="Modal box";
+			var x=document.createElement("span");
+			x.classList.add("close");
+				x.innerText="X"
+			head.appendChild(h2);
+			head.appendChild(x);
+		var body=document.createElement("div");
+		body.classList.add("body");
+			var para=document.createElement("p");
+			para.classList.add("para");
+			para.innerText="This is your toast message";
+			body.appendChild(para);
+		var foot=document.createElement("div");
+		foot.classList.add("foot");
+		var bt1=document.createElement("button");
+		bt1.innerText="Cancel";
+		var bt2=document.createElement("button");
+		bt2.innerText="Save";
+			foot.appendChild(bt1);
+			foot.appendChild(bt2);
+			
+			toast.appendChild(head);
+			toast.appendChild(body);
+			toast.appendChild(foot);
+		var btn=document.querySelector("button");
+		btn.addEventListener("click",function(){
+			toast.classList.remove("toast-r");
+			ol.classList.add("overlay");
+			document.body.appendChild(toast);
+		});
+		x.addEventListener("click",function(){
+			toast.classList.add("toast-r");
+			ol.classList.remove("overlay");
+		});
+		bt1.addEventListener("click",function(){
+			toast.classList.add("toast-r");
+			ol.classList.remove("overlay");
+		});
+		bt2.addEventListener("click",function(){
+			toast.classList.add("toast-r");
+			ol.classList.remove("overlay");
+		});
+			
+	</script>
+	</body>
+</html>
